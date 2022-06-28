@@ -10,23 +10,34 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class VendingMachineDaoFileImpl implements VendingMachineDao {
 
-    private static final String PATH = "";
+    private final String PATH;
 
     private static final String DELIMITER = "::";
 
     private Map<String, Item> items = new HashMap<>();
 
-    BigDecimal currentInserted = new BigDecimal("0.00").setScale(2, RoundingMode.HALF_UP);
+    private BigDecimal currentInserted;
+
+    public VendingMachineDaoFileImpl(String arg) {
+        this.PATH = arg;
+        resetInserted();
+    }
+
+    private void resetInserted() {
+        this.currentInserted = new BigDecimal("0.00").setScale(2, RoundingMode.HALF_UP);
+    }
+
 
     @Override
     public List<Item> listAllItems() {
-        return (List<Item>) items.values();
+        return new ArrayList<>(items.values());
     }
 
     @Override
@@ -41,7 +52,9 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
             currentInserted = currentInserted.subtract(currentItem.getItemCost());
             currentItem.removeSingleStock();
             items.put(currentItem.getItemId(), currentItem);
-            return new Change(currentInserted);
+            BigDecimal changeAmount = currentInserted;
+            resetInserted();
+            return new Change(changeAmount);
         } else {
             throw new VMInsufficientFundsException("Insufficient Funds");
         }

@@ -51,7 +51,7 @@ public class UserIOConsoleImpl implements UserIO {
                 return Integer.parseInt(scanner.nextLine());
             } else {
                 System.out.println("Error, value entered is not an Integer");
-                scanner.next();
+                scanner.nextLine();
             }
         }
     }
@@ -72,7 +72,7 @@ public class UserIOConsoleImpl implements UserIO {
                 }
             } else {
                 System.out.println("Error, value entered is not an Integer");
-                scanner.next();
+                scanner.nextLine();
             }
         }
     }
@@ -87,7 +87,7 @@ public class UserIOConsoleImpl implements UserIO {
                 return Double.parseDouble(scanner.nextLine());
             } else {
                 System.out.println("Error, value entered is not a Double");
-                scanner.next();
+                scanner.nextLine();
             }
         }
     }
@@ -108,7 +108,7 @@ public class UserIOConsoleImpl implements UserIO {
                 }
             } else {
                 System.out.println("Error, value entered is not a Double");
-                scanner.next();
+                scanner.nextLine();
             }
         }
     }
@@ -123,7 +123,7 @@ public class UserIOConsoleImpl implements UserIO {
                 return Float.parseFloat(scanner.nextLine());
             } else {
                 System.out.println("Error, value entered is not a Float");
-                scanner.next();
+                scanner.nextLine();
             }
         }
     }
@@ -144,7 +144,7 @@ public class UserIOConsoleImpl implements UserIO {
                 }
             } else {
                 System.out.println("Error, value entered is not a Float");
-                scanner.next();
+                scanner.nextLine();
             }
         }
     }
@@ -159,7 +159,7 @@ public class UserIOConsoleImpl implements UserIO {
                 return Long.parseLong(scanner.nextLine());
             } else {
                 System.out.println("Error, value entered is not a Long");
-                scanner.next();
+                scanner.nextLine();
             }
         }
     }
@@ -180,7 +180,7 @@ public class UserIOConsoleImpl implements UserIO {
                 }
             } else {
                 System.out.println("Error, value entered is not a Long");
-                scanner.next();
+                scanner.nextLine();
             }
         }
     }
@@ -193,7 +193,7 @@ public class UserIOConsoleImpl implements UserIO {
                 return new BigDecimal(scanner.nextLine()).setScale(2, RoundingMode.HALF_UP);
             } else {
                 System.out.println("Error, value entered is not a BigDecimal");
-                scanner.next();
+                scanner.nextLine();
             }
         }
     }

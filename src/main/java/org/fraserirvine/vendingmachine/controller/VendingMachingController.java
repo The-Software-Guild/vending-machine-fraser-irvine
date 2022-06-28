@@ -35,9 +35,9 @@ public class VendingMachingController {
                     break;
                 default:
                     try {
-                        view.displayChange(service.vendItem(itemList.get(menuSelection-2).getItemId()));
+                        view.displayChange(service.vendItem(itemList.get(menuSelection-3).getItemId()));
                     } catch (VMOutOfStockException | VMInsufficientFundsException e) {
-                        throw new RuntimeException(e);
+                        view.printError(e);
                     }
             }
 

@@ -35,11 +35,11 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
 
     @Override
     public BigDecimal getInserted() {
-        return null;
+        return dao.getInserted();
     }
 
     @Override
     public void insertMoney(BigDecimal amount) {
-
+        dao.insertMoney(amount);
     }
 }

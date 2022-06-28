@@ -14,7 +14,7 @@ public class App {
     public static void main(String[] args) {
         UserIO myIo = new UserIOConsoleImpl();
         VendingMachineView myView = new VendingMachineView(myIo);
-        VendingMachineDao myDao = new VendingMachineDaoFileImpl();
+        VendingMachineDao myDao = new VendingMachineDaoFileImpl(args[0]);
         VendingMachineServiceLayer myService = new VendingMachineServiceLayerImpl(myDao);
         VendingMachingController controller = new VendingMachingController(myService,myView);
         controller.run();
