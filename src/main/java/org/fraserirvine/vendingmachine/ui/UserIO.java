@@ -1,5 +1,7 @@
 package org.fraserirvine.vendingmachine.ui;
 
+import java.math.BigDecimal;
+
 public interface UserIO {
 
     void print(String msg);
@@ -19,6 +21,8 @@ public interface UserIO {
     long readLong(String prompt);
 
     long readLong(String prompt, long min, long max);
+
+    BigDecimal readBigDecimal(String prompt);
 
     String readString(String prompt);
 

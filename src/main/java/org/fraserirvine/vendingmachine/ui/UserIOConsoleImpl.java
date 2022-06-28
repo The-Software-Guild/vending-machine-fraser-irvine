@@ -1,5 +1,7 @@
 package org.fraserirvine.vendingmachine.ui;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class UserIOConsoleImpl implements UserIO {
@@ -178,6 +180,19 @@ public class UserIOConsoleImpl implements UserIO {
                 }
             } else {
                 System.out.println("Error, value entered is not a Long");
+                scanner.next();
+            }
+        }
+    }
+
+    @Override
+    public BigDecimal readBigDecimal(String prompt) {
+        System.out.println(prompt);
+        while (true) {
+            if (scanner.hasNextBigDecimal()) {
+                return new BigDecimal(scanner.nextLine()).setScale(2, RoundingMode.HALF_UP);
+            } else {
+                System.out.println("Error, value entered is not a BigDecimal");
                 scanner.next();
             }
         }

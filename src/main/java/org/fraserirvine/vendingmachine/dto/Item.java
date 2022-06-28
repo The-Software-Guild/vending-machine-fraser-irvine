@@ -7,7 +7,7 @@ public class Item {
     private String itemId;
     private String itemName;
     private BigDecimal itemCost;
-    private int quantity;
+    private int stock;
 
     public Item(String itemId) {
         this.itemId = itemId;
@@ -21,8 +21,8 @@ public class Item {
         this.itemCost = itemCost;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public String getItemId() {
@@ -37,7 +37,13 @@ public class Item {
         return itemCost;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getStock() {
+        return stock;
     }
+
+    @Override
+    public String toString() {
+        return "[" + itemName + " | " + itemCost + " ]";
+    }
+
 }
