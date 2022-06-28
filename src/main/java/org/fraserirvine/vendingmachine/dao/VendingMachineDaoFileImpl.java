@@ -1,5 +1,6 @@
 package org.fraserirvine.vendingmachine.dao;
 
+import org.fraserirvine.vendingmachine.dto.Change;
 import org.fraserirvine.vendingmachine.dto.Item;
 
 import java.io.FileWriter;
@@ -29,8 +30,22 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
     }
 
     @Override
-    public void vendItem(String itemId) {
+    public Change vendItem(String itemId) throws VMOutOfStockException, VMInsufficientFundsException {
+        loadItems();
+        Item currentItem = items.get(itemId);
 
+        if (currentItem.getStock() == 0) {
+            throw new VMOutOfStockException("Item out of stock");
+        }
+
+        if (currentInserted.compareTo(currentItem.getItemCost()) >= 0) {
+            currentInserted = currentInserted.subtract(currentItem.getItemCost());
+            currentItem.removeSingleStock();
+            items.put(currentItem.getItemId(), currentItem);
+            return new Change(currentInserted);
+        } else {
+            throw new VMInsufficientFundsException("Insufficient Funds");
+        }
     }
 
     @Override
@@ -40,7 +55,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
 
     @Override
     public void insertMoney(BigDecimal amount) {
-        currentInserted.add(amount);
+        currentInserted = currentInserted.add(amount);
     }
 
 

@@ -1,5 +1,6 @@
 package org.fraserirvine.vendingmachine.dao;
 
+import org.fraserirvine.vendingmachine.dto.Change;
 import org.fraserirvine.vendingmachine.dto.Item;
 
 import java.math.BigDecimal;
@@ -9,7 +10,7 @@ public interface VendingMachineDao {
 
     List<Item> listAllItems();
 
-    void vendItem(String itemId);
+    Change vendItem(String itemId) throws VMOutOfStockException, VMInsufficientFundsException;
 
     BigDecimal getInserted();
 

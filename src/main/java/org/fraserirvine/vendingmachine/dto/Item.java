@@ -41,6 +41,10 @@ public class Item {
         return stock;
     }
 
+    public void removeSingleStock() {
+        this.stock--;
+    }
+
     @Override
     public String toString() {
         return "[" + itemName + " | " + itemCost + " ]";
