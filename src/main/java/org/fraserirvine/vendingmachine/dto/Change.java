@@ -28,28 +28,28 @@ public class Change {
         BigDecimal workingDecimal = amount;
 
         while (true) {
-            if (bigDecimalComparison(workingDecimal,2.0) >= 0) {
+            if (bdCompare(workingDecimal,2.0) >= 0) {
                 this.twoPound++;
                 workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(2.0));
-            } else if (bigDecimalComparison(workingDecimal, 1.0) >= 0) {
+            } else if (bdCompare(workingDecimal, 1.0) >= 0) {
                 this.onePound++;
                 workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(1.0));
-            } else if (bigDecimalComparison(workingDecimal,0.50) >= 0){
+            } else if (bdCompare(workingDecimal,0.50) >= 0){
                 this.fiftyPence++;
                 workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(0.5));
-            } else if (bigDecimalComparison(workingDecimal, 0.20) >= 0) {
+            } else if (bdCompare(workingDecimal, 0.20) >= 0) {
                 this.twentyPence++;
                 workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(0.20));
-            } else if (bigDecimalComparison(workingDecimal, 0.10) >= 0) {
+            } else if (bdCompare(workingDecimal, 0.10) >= 0) {
                 this.tenPence++;
                 workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(0.10));
-            } else if (bigDecimalComparison(workingDecimal, 0.05) >= 0) {
+            } else if (bdCompare(workingDecimal, 0.05) >= 0) {
                 this.fivePence++;
                 workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(0.05));
-            } else if (bigDecimalComparison(workingDecimal, 0.02) >= 0) {
+            } else if (bdCompare(workingDecimal, 0.02) >= 0) {
                 this.twoPence++;
                 workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(0.02));
-            } else if (bigDecimalComparison(workingDecimal, 0.01) >= 0) {
+            } else if (bdCompare(workingDecimal, 0.01) >= 0) {
                 this.onePenny++;
                 workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(0.01));
             } else {
@@ -58,7 +58,7 @@ public class Change {
         }
     }
 
-    private int bigDecimalComparison(BigDecimal i, double denomination) {
+    private int bdCompare(BigDecimal i, double denomination) {
         return i.compareTo(BigDecimal.valueOf(denomination));
     }
 
