@@ -1,5 +1,6 @@
 package org.fraserirvine.vendingmachine.ui;
 
+import org.fraserirvine.vendingmachine.dto.Change;
 import org.fraserirvine.vendingmachine.dto.Item;
 
 import java.math.BigDecimal;
@@ -28,6 +29,10 @@ public class VendingMachineView {
 
     public BigDecimal insertMoney() {
         return io.readBigDecimal("Enter the amount you would like to insert");
+    }
+
+    public void displayChange(Change change) {
+        io.print(change.toString());
     }
 
 }

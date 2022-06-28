@@ -31,7 +31,6 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
 
     @Override
     public Change vendItem(String itemId) throws VMOutOfStockException, VMInsufficientFundsException {
-        loadItems();
         Item currentItem = items.get(itemId);
 
         if (currentItem.getStock() == 0) {
@@ -77,8 +76,8 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
                 DELIMITER + item.getStock();
     }
 
-
-    private void loadItems() {
+    @Override
+    public void loadItems() {
         List<String> lines;
         try {
             lines = Files.readAllLines(Paths.get(PATH));

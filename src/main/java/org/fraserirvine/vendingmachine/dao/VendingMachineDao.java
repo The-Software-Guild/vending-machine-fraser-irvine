@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface VendingMachineDao {
 
+    void loadItems();
+
     List<Item> listAllItems();
 
     Change vendItem(String itemId) throws VMOutOfStockException, VMInsufficientFundsException;

@@ -65,33 +65,66 @@ public class Change {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Change: (");
+        sb.append("Change: | ");
         if (twoPound != 0) {
-            sb.append("£2: ").append(twoPound);
+            sb.append("£2: ").append(twoPound).append(" | ");
         }
         if (onePound != 0) {
-            sb.append("£1: ").append(onePound);
+            sb.append("£1: ").append(onePound).append(" | ");
         }
         if (fiftyPence != 0) {
-            sb.append("50p: ").append(fiftyPence);
+            sb.append("50p: ").append(fiftyPence).append(" | ");
         }
         if (twentyPence != 0) {
-            sb.append("20p: ").append(twentyPence);
+            sb.append("20p: ").append(twentyPence).append(" | ");
         }
         if (tenPence != 0) {
-            sb.append("10p: ").append(tenPence);
+            sb.append("10p: ").append(tenPence).append(" | ");
         }
         if (fivePence != 0) {
-            sb.append("5p: ").append(fivePence);
+            sb.append("5p: ").append(fivePence).append(" | ");
         }
         if (twoPence != 0) {
-            sb.append("2p: ").append(twoPence);
+            sb.append("2p: ").append(twoPence).append(" | ");
         }
         if (onePenny != 0) {
-            sb.append("1p: ").append(onePenny);
+            sb.append("1p: ").append(onePenny).append(" | ");
         }
-        sb.append(")");
         return sb.toString();
     }
 
+    //getter methods for testing purposes
+
+
+    public int getTwoPound() {
+        return twoPound;
+    }
+
+    public int getOnePound() {
+        return onePound;
+    }
+
+    public int getFiftyPence() {
+        return fiftyPence;
+    }
+
+    public int getTwentyPence() {
+        return twentyPence;
+    }
+
+    public int getTenPence() {
+        return tenPence;
+    }
+
+    public int getFivePence() {
+        return fivePence;
+    }
+
+    public int getTwoPence() {
+        return twoPence;
+    }
+
+    public int getOnePenny() {
+        return onePenny;
+    }
 }

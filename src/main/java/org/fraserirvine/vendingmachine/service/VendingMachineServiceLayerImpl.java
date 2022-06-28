@@ -1,6 +1,9 @@
 package org.fraserirvine.vendingmachine.service;
 
+import org.fraserirvine.vendingmachine.dao.VMInsufficientFundsException;
+import org.fraserirvine.vendingmachine.dao.VMOutOfStockException;
 import org.fraserirvine.vendingmachine.dao.VendingMachineDao;
+import org.fraserirvine.vendingmachine.dto.Change;
 import org.fraserirvine.vendingmachine.dto.Item;
 
 import java.math.BigDecimal;
@@ -14,6 +17,11 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         this.dao = dao;
     }
 
+    @Override
+    public void loadItems() {
+        dao.loadItems();
+    }
+
 
     @Override
     public List<Item> listAllItems() {
@@ -21,8 +29,8 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     }
 
     @Override
-    public void vendItem(String itemId) {
-        dao.vendItem(itemId);
+    public Change vendItem(String itemId) throws VMOutOfStockException, VMInsufficientFundsException {
+        return dao.vendItem(itemId);
     }
 
     @Override
