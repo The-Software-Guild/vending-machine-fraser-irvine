@@ -6,18 +6,16 @@ import org.fraserirvine.vendingmachine.dto.Item;
 import org.fraserirvine.vendingmachine.service.VendingMachineServiceLayer;
 import org.fraserirvine.vendingmachine.ui.VendingMachineView;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 
-public class VendingMachingController {
+public class VendingMachineController {
 
     private VendingMachineView view;
 
     private VendingMachineServiceLayer service;
 
 
-    public VendingMachingController(VendingMachineServiceLayer service, VendingMachineView view) {
+    public VendingMachineController(VendingMachineServiceLayer service, VendingMachineView view) {
         this.service = service;
         this.view = view;
     }

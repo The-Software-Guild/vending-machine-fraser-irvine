@@ -3,7 +3,6 @@ package org.fraserirvine.vendingmachine.dao;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class VendingMachineAuditDaoImpl implements VendingMachineAuditDao {
@@ -21,7 +20,7 @@ public class VendingMachineAuditDaoImpl implements VendingMachineAuditDao {
         }
 
         LocalDateTime timestamp = LocalDateTime.now();
-        out.println(timestamp.toString() + " : " + entry);
+        out.println(timestamp + " : " + entry);
         out.flush();
     }
 
