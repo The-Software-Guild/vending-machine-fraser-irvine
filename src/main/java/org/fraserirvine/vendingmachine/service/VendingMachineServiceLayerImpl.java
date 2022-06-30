@@ -2,6 +2,7 @@ package org.fraserirvine.vendingmachine.service;
 
 import org.fraserirvine.vendingmachine.dao.VMInsufficientFundsException;
 import org.fraserirvine.vendingmachine.dao.VMOutOfStockException;
+import org.fraserirvine.vendingmachine.dao.VendingMachineAuditDao;
 import org.fraserirvine.vendingmachine.dao.VendingMachineDao;
 import org.fraserirvine.vendingmachine.dto.Change;
 import org.fraserirvine.vendingmachine.dto.Item;
@@ -11,10 +12,13 @@ import java.util.List;
 
 public class VendingMachineServiceLayerImpl implements VendingMachineServiceLayer {
 
-    VendingMachineDao dao;
+    private VendingMachineDao dao;
 
-    public VendingMachineServiceLayerImpl(VendingMachineDao dao) {
+    private VendingMachineAuditDao auditDao;
+
+    public VendingMachineServiceLayerImpl(VendingMachineDao dao, VendingMachineAuditDao auditDao) {
         this.dao = dao;
+        this.auditDao = auditDao;
     }
 
     @Override

@@ -1,6 +1,8 @@
 package org.fraserirvine.vendingmachine;
 
 import org.fraserirvine.vendingmachine.controller.VendingMachingController;
+import org.fraserirvine.vendingmachine.dao.VendingMachineAuditDao;
+import org.fraserirvine.vendingmachine.dao.VendingMachineAuditDaoImpl;
 import org.fraserirvine.vendingmachine.dao.VendingMachineDao;
 import org.fraserirvine.vendingmachine.dao.VendingMachineDaoFileImpl;
 import org.fraserirvine.vendingmachine.service.VendingMachineServiceLayer;
@@ -15,7 +17,8 @@ public class App {
         UserIO myIo = new UserIOConsoleImpl();
         VendingMachineView myView = new VendingMachineView(myIo);
         VendingMachineDao myDao = new VendingMachineDaoFileImpl(args[0]);
-        VendingMachineServiceLayer myService = new VendingMachineServiceLayerImpl(myDao);
+        VendingMachineAuditDao myAuditDao = new VendingMachineAuditDaoImpl();
+        VendingMachineServiceLayer myService = new VendingMachineServiceLayerImpl(myDao, myAuditDao);
         VendingMachingController controller = new VendingMachingController(myService,myView);
         controller.run();
     }
