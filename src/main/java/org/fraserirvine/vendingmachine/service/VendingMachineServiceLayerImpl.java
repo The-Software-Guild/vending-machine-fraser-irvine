@@ -1,9 +1,6 @@
 package org.fraserirvine.vendingmachine.service;
 
-import org.fraserirvine.vendingmachine.dao.VMInsufficientFundsException;
-import org.fraserirvine.vendingmachine.dao.VMOutOfStockException;
-import org.fraserirvine.vendingmachine.dao.VendingMachineAuditDao;
-import org.fraserirvine.vendingmachine.dao.VendingMachineDao;
+import org.fraserirvine.vendingmachine.dao.*;
 import org.fraserirvine.vendingmachine.dto.Change;
 import org.fraserirvine.vendingmachine.dto.Item;
 
@@ -22,13 +19,15 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     }
 
     @Override
-    public void loadItems() {
+    public void loadItems() throws VMAuditFileNotFoundException {
         dao.loadItems();
+        auditDao.writeAuditEntry("Vending machine data successfully loaded");
     }
 
     @Override
-    public void writeItems() {
+    public void writeItems() throws VMAuditFileNotFoundException {
         dao.writeItems();
+        auditDao.writeAuditEntry("Vending machine data successfully saved");
     }
 
 
@@ -39,6 +38,7 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
 
     @Override
     public Change vendItem(String itemId) throws VMOutOfStockException, VMInsufficientFundsException {
+
         return dao.vendItem(itemId);
     }
 
@@ -48,7 +48,8 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     }
 
     @Override
-    public void insertMoney(BigDecimal amount) {
+    public void insertMoney(BigDecimal amount) throws VMAuditFileNotFoundException {
         dao.insertMoney(amount);
+        auditDao.writeAuditEntry("User inserted " + amount.toString() + " into vending machine");
     }
 }

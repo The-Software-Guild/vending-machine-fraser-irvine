@@ -1,5 +1,6 @@
 package org.fraserirvine.vendingmachine.service;
 
+import org.fraserirvine.vendingmachine.dao.VMAuditFileNotFoundException;
 import org.fraserirvine.vendingmachine.dao.VMInsufficientFundsException;
 import org.fraserirvine.vendingmachine.dao.VMOutOfStockException;
 import org.fraserirvine.vendingmachine.dto.Change;
@@ -10,9 +11,9 @@ import java.util.List;
 
 public interface VendingMachineServiceLayer {
 
-    void loadItems();
+    void loadItems() throws VMAuditFileNotFoundException;
 
-    void writeItems();
+    void writeItems() throws VMAuditFileNotFoundException;
 
     List<Item> listAllItems();
 
@@ -20,6 +21,6 @@ public interface VendingMachineServiceLayer {
 
     BigDecimal getInserted();
 
-    void insertMoney(BigDecimal amount);
+    void insertMoney(BigDecimal amount) throws VMAuditFileNotFoundException;
 
 }
