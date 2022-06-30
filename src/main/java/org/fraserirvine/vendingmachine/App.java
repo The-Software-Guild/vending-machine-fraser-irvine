@@ -17,6 +17,7 @@ public class App {
         UserIO myIo = new UserIOConsoleImpl();
         VendingMachineView myView = new VendingMachineView(myIo);
         VendingMachineAuditDao myAuditDao = new VendingMachineAuditDaoImpl();
+        //the path to the vending machine file is defined as a CLI argument.
         VendingMachineDao myDao = new VendingMachineDaoFileImpl(args[0]);
         VendingMachineServiceLayer myService = new VendingMachineServiceLayerImpl(myDao, myAuditDao);
         VendingMachineController controller = new VendingMachineController(myService,myView);
