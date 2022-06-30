@@ -105,7 +105,8 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
 
     }
 
-    private void writeItems() {
+    @Override
+    public void writeItems() {
         PrintWriter out;
 
         try {

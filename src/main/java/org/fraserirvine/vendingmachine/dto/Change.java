@@ -127,4 +127,15 @@ public class Change {
     public int getOnePenny() {
         return onePenny;
     }
+
+    public boolean hasNoChange() {
+        return twoPound == 0 &&
+                onePound == 0 &&
+                fiftyPence == 0 &&
+                twentyPence == 0 &&
+                tenPence == 0 &&
+                fivePence == 0 &&
+                twoPence == 0 &&
+                onePenny == 0;
+    }
 }

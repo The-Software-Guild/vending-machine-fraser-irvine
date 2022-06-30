@@ -24,14 +24,17 @@ public class VendingMachingController {
 
     public void run() {
         service.loadItems();
-        while (true) {
+        boolean running = true;
+        while (running) {
             List<Item> itemList = service.listAllItems();
             int menuSelection = view.printMenuAndGetSelection(itemList, service.getInserted());
-
             switch (menuSelection) {
                 case 1:
                     service.insertMoney(view.insertMoney());
+                    break;
                 case 2:
+                    service.writeItems();
+                    running = false;
                     break;
                 default:
                     try {
@@ -40,9 +43,6 @@ public class VendingMachingController {
                         view.printError(e);
                     }
             }
-
         }
-
     }
-
 }

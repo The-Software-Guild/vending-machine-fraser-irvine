@@ -12,6 +12,8 @@ public interface VendingMachineServiceLayer {
 
     void loadItems();
 
+    void writeItems();
+
     List<Item> listAllItems();
 
     Change vendItem(String itemId) throws VMOutOfStockException, VMInsufficientFundsException;

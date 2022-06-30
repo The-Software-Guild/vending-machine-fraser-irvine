@@ -22,6 +22,11 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         dao.loadItems();
     }
 
+    @Override
+    public void writeItems() {
+        dao.writeItems();
+    }
+
 
     @Override
     public List<Item> listAllItems() {
