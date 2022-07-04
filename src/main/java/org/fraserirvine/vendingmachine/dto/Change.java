@@ -25,33 +25,33 @@ public class Change {
         this.twoPence = 0;
         this.onePenny = 0;
 
-        BigDecimal workingDecimal = amount;
+        BigDecimal thisBD = amount;
 
         while (true) {
-            if (bdCompare(workingDecimal,2.0) >= 0) {
+            if (bdCompare(thisBD,2.0) >= 0) {
                 this.twoPound++;
-                workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(2.0));
-            } else if (bdCompare(workingDecimal, 1.0) >= 0) {
+                thisBD = thisBD.subtract(BigDecimal.valueOf(2.0));
+            } else if (bdCompare(thisBD, 1.0) >= 0) {
                 this.onePound++;
-                workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(1.0));
-            } else if (bdCompare(workingDecimal,0.50) >= 0){
+                thisBD = thisBD.subtract(BigDecimal.valueOf(1.0));
+            } else if (bdCompare(thisBD,0.50) >= 0){
                 this.fiftyPence++;
-                workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(0.5));
-            } else if (bdCompare(workingDecimal, 0.20) >= 0) {
+                thisBD = thisBD.subtract(BigDecimal.valueOf(0.5));
+            } else if (bdCompare(thisBD, 0.20) >= 0) {
                 this.twentyPence++;
-                workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(0.20));
-            } else if (bdCompare(workingDecimal, 0.10) >= 0) {
+                thisBD = thisBD.subtract(BigDecimal.valueOf(0.20));
+            } else if (bdCompare(thisBD, 0.10) >= 0) {
                 this.tenPence++;
-                workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(0.10));
-            } else if (bdCompare(workingDecimal, 0.05) >= 0) {
+                thisBD = thisBD.subtract(BigDecimal.valueOf(0.10));
+            } else if (bdCompare(thisBD, 0.05) >= 0) {
                 this.fivePence++;
-                workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(0.05));
-            } else if (bdCompare(workingDecimal, 0.02) >= 0) {
+                thisBD = thisBD.subtract(BigDecimal.valueOf(0.05));
+            } else if (bdCompare(thisBD, 0.02) >= 0) {
                 this.twoPence++;
-                workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(0.02));
-            } else if (bdCompare(workingDecimal, 0.01) >= 0) {
+                thisBD = thisBD.subtract(BigDecimal.valueOf(0.02));
+            } else if (bdCompare(thisBD, 0.01) >= 0) {
                 this.onePenny++;
-                workingDecimal = workingDecimal.subtract(BigDecimal.valueOf(0.01));
+                thisBD = thisBD.subtract(BigDecimal.valueOf(0.01));
             } else {
                 break;
             }
