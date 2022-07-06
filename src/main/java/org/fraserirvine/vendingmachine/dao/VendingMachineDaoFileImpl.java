@@ -26,7 +26,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
     private BigDecimal currentInserted;
 
     public VendingMachineDaoFileImpl() {
-        this.PATH = System.getenv("PATH");
+        this.PATH = System.getenv("VENDING_MACHINE_PATH");
         resetInserted();
     }
 

@@ -5,6 +5,7 @@ import org.fraserirvine.vendingmachine.dto.Item;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -14,11 +15,22 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class VendingMachineDaoFileImplTest {
 
-    VendingMachineDao testDao;
+    // ==========================================================================
+    // In order for these tests to work.
+    // the environment variable "VENDING_MACHINE_PATH" needs to be set to the
+    // vending machine path file
+    // ==========================================================================
+
+    VendingMachineDaoFileImpl testDao;
+
+    public VendingMachineDaoFileImplTest() {
+        var ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        this.testDao = ctx.getBean("vendingMachineDao", VendingMachineDaoFileImpl.class);
+    }
 
     @BeforeEach
     public void setUp() {
-        testDao = new VendingMachineDaoFileImpl("src/test/java/org/fraserirvine/vendingmachine/dao/testingfile");
+        testDao = new VendingMachineDaoFileImpl();
 
     }
 
@@ -162,10 +174,12 @@ class VendingMachineDaoFileImplTest {
 
         assertTrue(
                 testVendOne.hasNoChange(),
-                "This transaction shouldnt have any change"
+                "This transaction shouldn't have any change"
         );
 
         //test change by paying two pounds instead of one
+
+        testDao.insertMoney(new BigDecimal("2.00"));
 
         Change testVendTwo;
         try {
