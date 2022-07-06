@@ -23,15 +23,9 @@ class VendingMachineDaoFileImplTest {
 
     VendingMachineDaoFileImpl testDao;
 
-    public VendingMachineDaoFileImplTest() {
-        var ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-        this.testDao = ctx.getBean("vendingMachineDao", VendingMachineDaoFileImpl.class);
-    }
-
     @BeforeEach
     public void setUp() {
         testDao = new VendingMachineDaoFileImpl();
-
     }
 
     @AfterEach
